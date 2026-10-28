@@ -45,7 +45,7 @@
           <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
         </div>
 
-        <!-- 3. E-mail (Para envio do comprovante) -->
+        <!-- 3. E-mail -->
         <div class="input-group">
           <label for="email">E-mail</label>
           <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
@@ -94,9 +94,11 @@
         <div id="status" class="status"></div>
       </form>
     </div>
+  </div>
 
-    <!-- TELA DE CONFIRMAÇÃO / COMPROVANTE (EXIBIDA APÓS O ENVIO) -->
-    <div id="comprovanteBox" class="comprovante-box">
+  <!-- MODAL DE CONFIRMAÇÃO (SOBREPOSTO) -->
+  <div id="modalComprovante" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
       <div class="icone-sucesso">✔</div>
       <h3>Inscrição realizada com sucesso!</h3>
       
@@ -105,3 +107,17 @@
       </div>
 
       <div class="dados-comprovante">
+        <p><strong>Nome:</strong> <span id="compNome"></span></p>
+        <p><strong>E-mail:</strong> <span id="compEmail"></span></p>
+        <p><strong>Escola:</strong> <span id="compEscola"></span></p>
+        <p><strong>Curso:</strong> <span id="compCurso"></span></p>
+        <p><strong>Período:</strong> <span id="compPeriodo"></span></p>
+      </div>
+
+      <button type="button" class="btn-novo-cadastro" onclick="fecharModal()">Fechar / Novo Cadastro</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

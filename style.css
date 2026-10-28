@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #F6CE07; /* Amarelo vibrante de fundo */
+  background-color: #F6CE07; /* Amarelo vibrante institucional */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +15,7 @@ body {
 }
 
 .container {
-  background: #011638; /* Azul escuro no cartão principal */
+  background: #011638; /* Azul escuro do painel principal */
   color: #EFE9F4;
   padding: 30px;
   border-radius: 16px;
@@ -25,7 +25,7 @@ body {
 }
 
 .container-busca {
-  max-width: 900px; /* Largura estendida para a tabela de busca */
+  max-width: 900px; /* Largura expandida para a página de busca */
 }
 
 .logo-header {
@@ -118,7 +118,9 @@ button:disabled {
   font-weight: 600;
 }
 
-/* --- ESTILOS DA PÁGINA DE BUSCA --- */
+/* ==========================================
+   ESTILOS DA PÁGINA DE BUSCA (busca.html)
+   ========================================== */
 
 .busca-box {
   display: flex;
@@ -190,4 +192,91 @@ tr:hover {
 .status-ok {
   color: #28a745;
   font-weight: bold;
+}
+
+/* ==========================================
+   MODAL DE CONFIRMAÇÃO (SOBREPOSTO)
+   ========================================== */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(1, 22, 56, 0.85); /* Escurece o fundo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: #011638;
+  border: 2px solid #F6CE07;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  animation: modalEntrada 0.3s ease-out;
+}
+
+@keyframes modalEntrada {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-content .icone-sucesso {
+  font-size: 50px;
+  color: #F6CE07;
+  margin-bottom: 10px;
+}
+
+.modal-content h3 {
+  color: #F6CE07;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.modal-content .alerta-comprovante {
+  background-color: #F6CE07;
+  color: #011638;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.modal-content .dados-comprovante {
+  background-color: rgba(239, 233, 244, 0.1);
+  border: 1px solid rgba(246, 206, 7, 0.3);
+  padding: 15px;
+  border-radius: 8px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.modal-content .dados-comprovante p {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #EFE9F4;
+}
+
+.modal-content .dados-comprovante strong {
+  color: #F6CE07;
+}
+
+.btn-novo-cadastro {
+  background-color: transparent;
+  border: 2px solid #F6CE07;
+  color: #F6CE07;
+  margin-top: 10px;
+}
+
+.btn-novo-cadastro:hover {
+  background-color: rgba(246, 206, 7, 0.1);
 }
