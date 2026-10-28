@@ -3,86 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consultar Cadastros - Feira das Profissões</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f2f5;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-    }
-    .container {
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 900px;
-    }
-    h2 { text-align: center; margin-bottom: 20px; color: #1a1a1a; }
-    .busca-box {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 25px;
-    }
-    input {
-      flex: 1;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 15px;
-      outline: none;
-    }
-    .btn-buscar {
-      padding: 12px 20px;
-      background-color: #0066cc;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .btn-buscar:hover { background-color: #004999; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 15px;
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: left;
-      font-size: 14px;
-    }
-    th { background-color: #f8f9fa; color: #333; }
-    .sem-resultados { text-align: center; margin-top: 15px; color: #777; }
-    
-    .btn-confirmar {
-      background-color: #28a745;
-      color: white;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .btn-confirmar:hover { background-color: #218838; }
-    .status-ok {
-      color: #28a745;
-      font-weight: bold;
-    }
-  </style>
+  <title>Consultar Cadastros - Feira das Profissões 2026</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
+  <div class="container container-busca">
+    <div class="logo-header">
+      <img src="logo.png" alt="Feira das Profissões 2026">
+    </div>
+
     <h2>Consulta de Inscritos</h2>
-    
+    <p class="subtitulo">Pesquise por nome, escola ou WhatsApp para confirmar presença</p>
+
     <div class="busca-box">
       <input type="text" id="campoBusca" placeholder="Digite o nome, escola ou WhatsApp...">
-      <button class="btn-buscar" id="btnBuscar">Buscar</button>
+      <button id="btnBuscar">Buscar</button>
     </div>
 
     <div id="resultadoArea"></div>
@@ -103,60 +39,63 @@
       btnBuscar.innerText = 'Buscando...';
       resultadoArea.innerHTML = '<p class="sem-resultados">Pesquisando...</p>';
 
-      fetch(`${APPS_SCRIPT_URL}?q=${encodeURIComponent(termo)}`)
-        .then(response => response.json())
-        .then(data => {
-          if (data.resultados && data.resultados.length > 0) {
-            let html = `
-              <table>
-                <thead>
-                  <tr>
-                    <th>Nome</th>
-                    <th>Escola</th>
-                    <th>Curso</th>
-                    <th>Período</th>
-                    <th>Presença</th>
-                    <th>Ação</th>
-                  </tr>
-                </thead>
-                <tbody>
-            `;
-
-            data.resultados.forEach(item => {
-              const jaConfirmado = item.presenca === 'Confirmado';
-              html += `
+      fetch(`${APPS_SCRIPT_URL}?q=${encodeURIComponent(termo)}`, {
+        method: 'GET',
+        redirect: 'follow'
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === "success" && data.resultados && data.resultados.length > 0) {
+          let html = `
+            <table>
+              <thead>
                 <tr>
-                  <td>${item.nome}</td>
-                  <td>${item.escola}</td>
-                  <td>${item.curso}</td>
-                  <td>${item.periodo}</td>
-                  <td id="status-${item.linhaOriginal}">
-                    ${jaConfirmado ? '<span class="status-ok">✔ Confirmado</span>' : 'Pendente'}
-                  </td>
-                  <td id="acao-${item.linhaOriginal}">
-                    ${jaConfirmado 
-                      ? '---' 
-                      : `<button class="btn-confirmar" onclick="confirmarPresenca(${item.linhaOriginal})">Confirmar Presença</button>`
-                    }
-                  </td>
+                  <th>Nome</th>
+                  <th>Escola</th>
+                  <th>Curso</th>
+                  <th>Período</th>
+                  <th>Presença</th>
+                  <th>Ação</th>
                 </tr>
-              `;
-            });
+              </thead>
+              <tbody>
+          `;
 
-            html += '</tbody></table>';
-            resultadoArea.innerHTML = html;
-          } else {
-            resultadoArea.innerHTML = '<p class="sem-resultados">Nenhum cadastro encontrado.</p>';
-          }
-        })
-        .catch(err => {
-          console.error(err);
-          resultadoArea.innerHTML = '<p class="sem-resultados" style="color:red;">Erro ao realizar a busca.</p>';
-        })
-        .finally(() => {
-          btnBuscar.disabled = false;
-          btnBuscar.innerText = 'Buscar';
-        });
+          data.resultados.forEach(item => {
+            const jaConfirmado = item.presenca === 'Confirmado';
+            html += `
+              <tr>
+                <td>${item.nome}</td>
+                <td>${item.escola}</td>
+                <td>${item.curso}</td>
+                <td>${item.periodo}</td>
+                <td id="status-${item.linhaOriginal}">
+                  ${jaConfirmado ? '<span class="status-ok">✔ Confirmado</span>' : 'Pendente'}
+                </td>
+                <td id="acao-${item.linhaOriginal}">
+                  ${jaConfirmado 
+                    ? '---' 
+                    : `<button class="btn-confirmar" onclick="confirmarPresenca(${item.linhaOriginal})">Confirmar Presença</button>`
+                  }
+                </td>
+              </tr>
+            `;
+          });
+
+          html += '</tbody></table>';
+          resultadoArea.innerHTML = html;
+        } else {
+          resultadoArea.innerHTML = '<p class="sem-resultados">Nenhum cadastro encontrado.</p>';
+        }
+      })
+      .catch(err => {
+        console.error('Erro:', err);
+        resultadoArea.innerHTML = '<p class="sem-resultados" style="color:#ff6b6b;">Erro ao realizar a busca. Tente novamente.</p>';
+      })
+      .finally(() => {
+        btnBuscar.disabled = false;
+        btnBuscar.innerText = 'Buscar';
+      });
     }
 
     function confirmarPresenca(linha) {
@@ -172,11 +111,13 @@
         method: 'POST',
         body: formData
       })
+      .then(res => res.json())
       .then(() => {
         document.getElementById(`status-${linha}`).innerHTML = '<span class="status-ok">✔ Confirmado</span>';
         document.getElementById(`acao-${linha}`).innerHTML = '---';
       })
       .catch(err => {
+        console.error(err);
         alert('Erro ao confirmar presença. Tente novamente.');
         btn.disabled = false;
         btn.innerText = 'Confirmar Presença';

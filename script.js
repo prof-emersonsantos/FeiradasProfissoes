@@ -1,4 +1,4 @@
-// Cole aqui a URL gerada ao implantar o Apps Script
+
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxYoRQz2K2WGs5xGfT0bO0X5z_LmKaoZBAdcpcsFfHMJnwZKihal5N0E_8Rx96Y--a8/exec';
 
 const form = document.getElementById('formularioAlunos');

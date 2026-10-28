@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f2f5;
+  background-color: #F6CE07; /* Amarelo vibrante de fundo */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,25 +15,44 @@ body {
 }
 
 .container {
-  background: #ffffff;
+  background: #011638; /* Azul escuro no cartão principal */
+  color: #EFE9F4;
   padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
   width: 100%;
-  max-width: 450px;
+  max-width: 500px;
+}
+
+.container-busca {
+  max-width: 900px; /* Largura estendida para a tabela de busca */
+}
+
+.logo-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo-header img {
+  max-width: 100%;
+  height: auto;
+  max-height: 180px;
+  object-fit: contain;
 }
 
 h2 {
   margin-bottom: 8px;
-  color: #1a1a1a;
+  color: #F6CE07;
   text-align: center;
+  font-size: 24px;
 }
 
 p.subtitulo {
   text-align: center;
-  color: #666;
+  color: #EFE9F4;
   font-size: 14px;
   margin-bottom: 25px;
+  opacity: 0.9;
 }
 
 .input-group {
@@ -43,7 +62,7 @@ p.subtitulo {
 label {
   display: block;
   margin-bottom: 6px;
-  color: #444;
+  color: #F6CE07;
   font-size: 14px;
   font-weight: 600;
 }
@@ -51,39 +70,45 @@ label {
 input, select {
   width: 100%;
   padding: 12px;
-  border: 1px solid #cccccc;
-  border-radius: 6px;
+  border: 2px solid transparent;
+  border-radius: 8px;
   font-size: 15px;
   outline: none;
-  background-color: #fff;
-  transition: border-color 0.2s;
+  background-color: #EFE9F4;
+  color: #011638;
+  font-weight: 500;
+  transition: border-color 0.2s, background-color 0.2s;
 }
 
 input:focus, select:focus {
-  border-color: #0066cc;
+  border-color: #F6CE07;
+  background-color: #ffffff;
 }
 
 button {
   width: 100%;
   padding: 14px;
-  background-color: #0066cc;
-  color: #ffffff;
+  background-color: #F6CE07;
+  color: #011638;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: transform 0.1s, background-color 0.2s;
   margin-top: 10px;
 }
 
 button:hover {
-  background-color: #004999;
+  background-color: #ffe033;
+  transform: translateY(-1px);
 }
 
 button:disabled {
-  background-color: #cccccc;
+  background-color: #8a8a8a;
+  color: #cccccc;
   cursor: not-allowed;
+  transform: none;
 }
 
 .status {
@@ -91,4 +116,78 @@ button:disabled {
   text-align: center;
   font-size: 14px;
   font-weight: 600;
+}
+
+/* --- ESTILOS DA PÁGINA DE BUSCA --- */
+
+.busca-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.busca-box input {
+  flex: 1;
+}
+
+.busca-box button {
+  width: auto;
+  padding: 12px 24px;
+  margin-top: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background-color: #ffffff;
+  color: #011638;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  font-size: 14px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+  background-color: #000c20;
+  color: #F6CE07;
+  font-weight: 700;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+.sem-resultados {
+  text-align: center;
+  margin-top: 20px;
+  color: #F6CE07;
+  font-size: 15px;
+}
+
+.btn-confirmar {
+  background-color: #1E75FF;
+  color: #ffffff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 13px;
+  margin-top: 0;
+  width: auto;
+}
+
+.btn-confirmar:hover {
+  background-color: #0056e0;
+}
+
+.status-ok {
+  color: #28a745;
+  font-weight: bold;
 }
