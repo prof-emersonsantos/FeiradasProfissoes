@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feira das Profissões - Cadastramento</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h2>Feira das Profissões</h2>
+    <p class="subtitulo">Preencha os dados abaixo para se cadastrar</p>
+
+    <form id="formularioAlunos">
+      <!-- 1. Escola -->
+      <div class="input-group">
+        <label for="escola">Escola</label>
+        <select id="escola" name="escola" required>
+          <option value="" disabled selected>Selecione a sua escola...</option>
+          <option value="Escola Estadual A">Escola Estadual A</option>
+          <option value="Escola Municipal B">Escola Municipal B</option>
+          <option value="Colégio C">Colégio C</option>
+        </select>
+      </div>
+
+      <!-- 2. Nome Completo -->
+      <div class="input-group">
+        <label for="nome">Nome Completo</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+      </div>
+
+      <!-- 3. WhatsApp -->
+      <div class="input-group">
+        <label for="whatsapp">WhatsApp</label>
+        <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" required>
+      </div>
+
+      <!-- 4. Curso de Interesse -->
+      <div class="input-group">
+        <label for="curso">Curso de interesse</label>
+        <select id="curso" name="curso" required>
+          <option value="" disabled selected>Selecione o curso...</option>
+          <option value="Administração">Administração</option>
+          <option value="Análise e Des. de Sistemas">Análise e Des. de Sistemas</option>
+          <option value="Direito">Direito</option>
+          <option value="Enfermagem">Enfermagem</option>
+          <option value="Engenharia Civil">Engenharia Civil</option>
+          <option value="Medicina Veterinária">Medicina Veterinária</option>
+          <option value="Psicologia">Psicologia</option>
+        </select>
+      </div>
+
+      <!-- 5. Período -->
+      <div class="input-group">
+        <label for="periodo">Período</label>
+        <select id="periodo" name="periodo" required>
+          <option value="" disabled selected>Selecione o período...</option>
+          <option value="Matutino">Matutino</option>
+          <option value="Noturno">Noturno</option>
+        </select>
+      </div>
+
+      <button type="submit" id="btnEnviar">Enviar Cadastro</button>
+      <div id="status" class="status"></div>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
