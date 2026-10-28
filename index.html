@@ -10,85 +10,98 @@
 
   <div class="container">
     <div class="logo-header">
-      <!-- Imagem do Logo salva na mesma pasta -->
       <img src="logo.png" alt="Feira das Profissões 2026">
     </div>
 
-    <h2>Cadastramento de Alunos</h2>
-    <p class="subtitulo">Preencha os dados abaixo para se inscrever</p>
+    <!-- ÁREA DO FORMULÁRIO DE INSCRIÇÃO -->
+    <div id="formArea">
+      <h2>Cadastramento de Alunos</h2>
+      <p class="subtitulo">Preencha os dados abaixo para se inscrever</p>
 
-    <form id="formularioAlunos">
-      <!-- 1. Escola -->
-      <div class="input-group">
-        <label for="escola">Escola</label>
-        <select id="escola" name="escola" required>
-          <option value="" disabled selected>Selecione a sua escola...</option>
-          <option value="EE Prof SEVERINO DE QUEIROZ">EE Prof SEVERINO DE QUEIROZ</option>
-          <option value="EE PROF EMYGDIO CAMPOS WIDAL">EE PROF EMYGDIO CAMPOS WIDAL</option>
-          <option value="EE PROFª NEYDER SUELLY COSTA VIEIRA">EE PROFª NEYDER SUELLY COSTA VIEIRA</option>
-          <option value="EE VESPASIANO MARTINS">EE VESPASIANO MARTINS</option>
-          <option value="EE PROF ZAURA HIGA">EE PROF ZAURA HIGA</option>
-          <option value="FUNLEC">FUNLEC</option>
-          <option value="COLEGIO STATUS">COLEGIO STATUS</option>
-          <option value="EE DONA CONSUELO MULLER">EE DONA CONSUELO MULLER</option>
-          <option value="COLEGIO NOVA ESCOLA">COLEGIO NOVA ESCOLA</option>
-          <option value="COLEGIO REFFERENCIAL">COLEGIO REFFERENCIAL</option>
-          <option value="outra">Outra escola...</option>
-        </select>
-        
-        <input type="text" id="outraEscolaInput" placeholder="Digite o nome da sua escola" style="display: none; margin-top: 10px;">
+      <form id="formularioAlunos">
+        <!-- 1. Escola -->
+        <div class="input-group">
+          <label for="escola">Escola</label>
+          <select id="escola" name="escola" required>
+            <option value="" disabled selected>Selecione a sua escola...</option>
+            <option value="EE Prof SEVERINO DE QUEIROZ">EE Prof SEVERINO DE QUEIROZ</option>
+            <option value="EE PROF EMYGDIO CAMPOS WIDAL">EE PROF EMYGDIO CAMPOS WIDAL</option>
+            <option value="EE PROFª NEYDER SUELLY COSTA VIEIRA">EE PROFª NEYDER SUELLY COSTA VIEIRA</option>
+            <option value="EE VESPASIANO MARTINS">EE VESPASIANO MARTINS</option>
+            <option value="EE PROF ZAURA HIGA">EE PROF ZAURA HIGA</option>
+            <option value="FUNLEC">FUNLEC</option>
+            <option value="COLEGIO STATUS">COLEGIO STATUS</option>
+            <option value="EE DONA CONSUELO MULLER">EE DONA CONSUELO MULLER</option>
+            <option value="COLEGIO NOVA ESCOLA">COLEGIO NOVA ESCOLA</option>
+            <option value="COLEGIO REFFERENCIAL">COLEGIO REFFERENCIAL</option>
+            <option value="outra">Outra escola...</option>
+          </select>
+          <input type="text" id="outraEscolaInput" placeholder="Digite o nome da sua escola" style="display: none; margin-top: 10px;">
+        </div>
+
+        <!-- 2. Nome Completo -->
+        <div class="input-group">
+          <label for="nome">Nome Completo</label>
+          <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+        </div>
+
+        <!-- 3. E-mail (Para envio do comprovante) -->
+        <div class="input-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+        </div>
+
+        <!-- 4. WhatsApp -->
+        <div class="input-group">
+          <label for="whatsapp">WhatsApp</label>
+          <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" maxlength="15" required>
+        </div>
+
+        <!-- 5. Curso de Interesse -->
+        <div class="input-group">
+          <label for="curso">Curso de interesse</label>
+          <select id="curso" name="curso" required>
+            <option value="" disabled selected>Selecione o curso...</option>
+            <option value="Administração">Administração</option>
+            <option value="Arquitetura e Urbanismo">Arquitetura e Urbanismo</option>
+            <option value="Biomedicina">Biomedicina</option>
+            <option value="Ciências Contábeis">Ciências Contábeis</option>
+            <option value="Com Social - Publicidade e Propaganda">Com Social - Publicidade e Propaganda</option>
+            <option value="Design de Interiores">Design de Interiores</option>
+            <option value="Direito">Direito</option>
+            <option value="Educação Física">Educação Física</option>
+            <option value="Enfermagem">Enfermagem</option>
+            <option value="Engenharia de Software">Engenharia de Software</option>
+            <option value="Estética e coméstica">Estética e coméstica</option>
+            <option value="Fisioterapia">Fisioterapia</option>
+            <option value="Nutrição">Nutrição</option>
+            <option value="Psicologia">Psicologia</option>
+            <option value="Radiologia">Radiologia</option>
+          </select>
+        </div>
+
+        <!-- 6. Período -->
+        <div class="input-group">
+          <label for="periodo">Período</label>
+          <select id="periodo" name="periodo" required>
+            <option value="" disabled selected>Selecione o período...</option>
+            <option value="Matutino">Matutino</option>
+            <option value="Noturno">Noturno</option>
+          </select>
+        </div>
+
+        <button type="submit" id="btnEnviar">Enviar Cadastro</button>
+        <div id="status" class="status"></div>
+      </form>
+    </div>
+
+    <!-- TELA DE CONFIRMAÇÃO / COMPROVANTE (EXIBIDA APÓS O ENVIO) -->
+    <div id="comprovanteBox" class="comprovante-box">
+      <div class="icone-sucesso">✔</div>
+      <h3>Inscrição realizada com sucesso!</h3>
+      
+      <div class="alerta-comprovante">
+        Salve este comprovante para apresentar no dia.
       </div>
 
-      <!-- 2. Nome Completo -->
-      <div class="input-group">
-        <label for="nome">Nome Completo</label>
-        <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
-      </div>
-
-      <!-- 3. WhatsApp -->
-      <div class="input-group">
-        <label for="whatsapp">WhatsApp</label>
-        <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" required>
-      </div>
-
-      <!-- 4. Curso de Interesse -->
-      <div class="input-group">
-        <label for="curso">Curso de interesse</label>
-        <select id="curso" name="curso" required>
-          <option value="" disabled selected>Selecione o curso...</option>
-          <option value="Administração">Administração</option>
-          <option value="Arquitetura e Urbanismo">Arquitetura e Urbanismo</option>
-          <option value="Biomedicina">Biomedicina</option>
-          <option value="Ciências Contábeis">Ciências Contábeis</option>
-          <option value="Com Social - Publicidade e Propaganda">Com Social - Publicidade e Propaganda</option>
-          <option value="Design de Interiores">Design de Interiores</option>
-          <option value="Direito">Direito</option>
-          <option value="Educação Física">Educação Física</option>
-          <option value="Enfermagem">Enfermagem</option>
-          <option value="Engenharia de Software">Engenharia de Software</option>
-          <option value="Estética e coméstica">Estética e coméstica</option>
-          <option value="Fisioterapia">Fisioterapia</option>
-          <option value="Nutrição">Nutrição</option>
-          <option value="Psicologia">Psicologia</option>
-          <option value="Radiologia">Radiologia</option>
-        </select>
-      </div>
-
-      <!-- 5. Período -->
-      <div class="input-group">
-        <label for="periodo">Período</label>
-        <select id="periodo" name="periodo" required>
-          <option value="" disabled selected>Selecione o período...</option>
-          <option value="Matutino">Matutino</option>
-          <option value="Noturno">Noturno</option>
-        </select>
-      </div>
-
-      <button type="submit" id="btnEnviar">Enviar Cadastro</button>
-      <div id="status" class="status"></div>
-    </form>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
+      <div class="dados-comprovante">
