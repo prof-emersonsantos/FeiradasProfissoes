@@ -96,23 +96,33 @@
     </div>
   </div>
 
-  <!-- MODAL DE CONFIRMAÇÃO (SOBREPOSTO) -->
+<!-- MODAL DE CONFIRMAÇÃO (SOBREPOSTO COM LAYOUT OFICIAL) -->
   <div id="modalComprovante" class="modal-overlay" style="display: none;">
     <div class="modal-content">
+      <div class="logo-header">
+        <img src="logo.png" alt="Feira das Profissões 2026">
+      </div>
+
       <div class="icone-sucesso">✔</div>
-      <h3>Inscrição realizada com sucesso!</h3>
+      <h3 class="modal-titulo-sucesso">Parabéns! Sua inscrição foi realizada com sucesso!</h3>
       
+      <p class="modal-subtitulo">🎓 Você está confirmado(a) na Feira das Profissões da Unigran Capital!</p>
+      <p class="modal-data">📅 Data: 5 de novembro de 2026.</p>
+
       <div class="alerta-comprovante">
-        Salve este comprovante para apresentar no dia.
+        🎁 Atenção: No dia do evento, apresente o comprovante da sua inscrição e garanta seu brinde especial!
       </div>
 
       <div class="dados-comprovante">
         <p><strong>Nome:</strong> <span id="compNome"></span></p>
         <p><strong>E-mail:</strong> <span id="compEmail"></span></p>
         <p><strong>Escola:</strong> <span id="compEscola"></span></p>
-        <p><strong>Curso:</strong> <span id="compCurso"></span></p>
+        <p><strong>Curso pretendido:</strong> <span id="compCurso"></span></p>
         <p><strong>Período:</strong> <span id="compPeriodo"></span></p>
       </div>
+
+      <p class="modal-mensagem">💙 Esperamos por você para um dia de descobertas, experiências e oportunidades para o seu futuro!</p>
+      <p class="modal-slogan">Unigran Capital – Seu futuro começa aqui!</p>
 
       <button type="button" class="btn-novo-cadastro" onclick="fecharModal()">Fechar / Novo Cadastro</button>
     </div>
